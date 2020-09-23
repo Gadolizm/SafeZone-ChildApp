@@ -8,9 +8,43 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+//              withError error: Error!) {
+//      if let error = error {
+//        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+//          print("The user has not signed in before or they have since signed out.")
+//        } else {
+//          print("\(error.localizedDescription)")
+//        }
+//        return
+//      }
+//      // Perform any operations on signed in user here.
+//      let userId = user.userID                  // For client-side use only!
+//      let idToken = user.authentication.idToken // Safe to send to the server
+//      let fullName = user.profile.name
+//      let givenName = user.profile.givenName
+//      let familyName = user.profile.familyName
+//      let email = user.profile.email
+//      // ...
+//        //1 Instantiating ViewController2 from storyboard
+//        let vc2 = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HelloViewController") as! HelloViewController
+//        //2 pushing ViewController2 to move to top of the navigation stack
+//        self.navigationController?.pushViewController(vc2, animated: true)
+//    }
+//
+    
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+      // Perform any operations when the user disconnects from app here.
+      // ...
+    }
 
 
 
@@ -19,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+        
+        // Initialize sign-in
+        GIDSignIn.sharedInstance().clientID = "901719357892-ughhb72klv60and4fqqcoaost1u8nv4q.apps.googleusercontent.com"
 
         return true
     }
